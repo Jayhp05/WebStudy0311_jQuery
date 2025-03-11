@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 위임</title>
+    <script>
+
+    </script>
+    <style>
+        li {
+            padding: 5px;
+        }
+        .done {
+            opacity : 0.5;
+            text-decoration: line-through;
+        }
+
+    </style>
+    <script>
+        function liClick(e) {
+            console.log(e.target.classList.container("plan-list"));
+
+            if(e.target.classList == "plan-list") {
+                e.target.classList.toggle("done");
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", (e) => {
+
+            const plan = document.querySelector("#plan");
+            // console.log(plan.children);
+
+            /*
+            for(let li of plan.children) {
+                li.addEventListener("click", liClick);
+                // li.addEventListener("click", (e) => {
+                //     // e.target (o), this (x)
+                //     console.log("화살표 : ", e.target, " == ", this);                =============> 실행 상태 확인을 위한 코드
+                // });
+                // li.addEventListener("click", function(e) {
+                //     console.log("익명함수 : ", e.target, " == ", this);
+                // });                                                                 =============> 실행 상태 확인을 위한 코드
+            }
+            */
+            
+            plan.addEventListener("click", liClick);
+
+            const btn = document.querySelector("#btn");
+            // btn.addEventListener("click", () => {
+            //     // <li class="plan-list">오라클을 활용한 SQL 쿼리</li>
+            //     const li = document.createElement("li");
+            //     console.log(li);
+            //     li.textContent = "오라클을 활용한 SQL 쿼리";
+            //     // li.addEventListener("click", liClick);
+            //     li.classList.add("plan-list");
+            //     plan.append(li);
+            // })
+
+            function liClick(e) {
+
+                $("#plan").on("click", ".plan-list", liClick);
+
+                $("#btn").on("click", function() {
+                    console.log($(this).text(), " == ", this.textContent);
+
+                    $("<li class='plan-list'>오라클을 활용한 SQL 쿼리</li>").appendTo("#plan");
+                    $("#plan").append("<li class='plan-list'>오라클을 활용한 SQL 쿼리2</li>");
+                });
+            }
+            
+        });
+    </script>
+</head>
+<body>
+	<div id="container">
+		<h2>프로그래밍 스터디 계획</h2>
+		<ul id="plan">
+			<li class="plan-list">JavaScript 함수</li>
+			<li class="plan-list">JavaScript DOM</li>
+			<li class="plan-list">JavaScript Event</li>
+			<li class="plan-list">jQuery 함수 선택자</li>					
+			<li class="plan-list">jQuery Effect</li>
+		</ul>
+	</div>
+	<button id="btn">항목 추가</button>
+</body>
+</html>
