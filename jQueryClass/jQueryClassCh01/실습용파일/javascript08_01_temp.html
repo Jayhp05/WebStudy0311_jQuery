@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        // $("#plan).:nth-child(even)");
+
+        $(function() {
+            // $("#done > .done-list:eq(0)").attr("id", "done1");
+            $(".plan-list:eq(1)").clone().appendTo("#done");
+        });
+
+
+        /*
+        $(function() {
+            const plan1 = document.querySelector("#container");
+            const doneList = plan1.children[1].nextElementSibling.children[1].children;
+            console.log(doneList);
+
+            console.log($("container").children()[1]);
+
+            console.log($("#container > .content:eq(1)").children().children());
+
+            const doneList2 = $("#container > .content:eq(1)").children().children();
+            console.log($(doneList2[0]).parent().children().text()); // 자식 요소 확인
+            console.log($(doneList2[0]).parent().children().prev().next()); // 이전 요소 갔다가 다시 전꺼 요소 확인
+
+            // console.log(plan1.children[1]);
+
+            // console.log(plan1.children);
+            // console.log($("#plan").children());
+
+            // for(li of plan1.children) {
+            //     console.log(li);
+            // }
+
+            // console.log($("#plan > .plan-list")[1]);
+            // console.log($("container").children()[1]);
+
+            // $("#plan > .plan-list").each(function(i, v) {
+            //     console.log(i, v)
+            // });
+
+            // plan1.children.forEach(function(v, i) {
+            //     console.log(v, i);
+            // });
+        });
+
+        */
+    </script>
+</head>
+<body>
+	<div id="container">
+		<div class="header">
+			<h1>DOM Tree</h1>
+		</div>		
+		<div class="content">
+			<!-- 앞으로 스터디 할 목록 -->
+			<h2>프로그래밍 스터디 계획</h2>
+			<ul id="plan">
+				<li class="plan-list">JavaScript 함수</li>
+				<li class="plan-list">JavaScript DOM</li>
+				<li class="plan-list">JavaScript Event</li>
+				<li class="plan-list">jQuery 함수 선택자</li>					
+				<li class="plan-list">jQuery Effect</li>
+			</ul>
+		</div>
+		<div class="content">
+			<!-- 완료된 스터디 목록 -->
+			<h2>프로그래밍 스터디 완료</h2>
+			<ul id="done">
+				<li class="done-list">HTML 기본 태그</li>
+				<li class="done-list">HTML5 시멘틱 태그</li>
+				<li class="done-list">CSS3 선택자</li>
+				<li class="done-list">CSS3 박스모델</li>
+				<li class="done-list">JavaScript 제어문</li>
+			</ul>
+		</div>
+	</div>		
+</body>
+</html>
